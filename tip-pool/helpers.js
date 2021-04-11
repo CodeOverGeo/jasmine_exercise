@@ -7,7 +7,7 @@ function sumPaymentTotal(type) {
 
     total += Number(payment[type]);
   }
-  console.log(total);
+
   return total;
 }
 
