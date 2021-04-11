@@ -1,4 +1,3 @@
-
 // accepts 'tipAmt', 'billAmt', 'tipPercent' and sums total from allPayments objects
 function sumPaymentTotal(type) {
   let total = 0;
@@ -8,7 +7,7 @@ function sumPaymentTotal(type) {
 
     total += Number(payment[type]);
   }
-
+  console.log(total);
   return total;
 }
 
@@ -23,4 +22,21 @@ function appendTd(tr, value) {
   newTd.innerText = value;
 
   tr.append(newTd);
+}
+
+function appendDeleteBtn(tr) {
+  let newTd = document.createElement('td');
+  newTd.className = 'deleteBtn';
+  newTd.innerText = 'X';
+
+  newTd.addEventListener('click', deleteRow);
+
+  tr.append(newTd);
+}
+
+function deleteRow(e) {
+  let row = e.target.closest('tr');
+  delete allServers[row.id];
+  row.parentNode.removeChild(row);
+  updateServerTable();
 }
